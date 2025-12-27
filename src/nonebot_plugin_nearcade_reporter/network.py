@@ -2,10 +2,8 @@ from typing import Any, Optional
 
 import httpx
 
-_client = httpx.AsyncClient(
-    base_url="https://nearcade.phizone.cn",
-    timeout=10.0
-)
+_client = httpx.AsyncClient(base_url="https://nearcade.phizone.cn", timeout=10.0)
+
 
 class NearcadeHttp:
     def __init__(self, api_token: str) -> None:

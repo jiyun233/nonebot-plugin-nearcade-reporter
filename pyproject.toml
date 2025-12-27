@@ -1,17 +1,18 @@
 [project]
 name = "nonebot-plugin-nearcade-reporter"
 version = "0.1.0"
-description = ""
-authors = [
-    {name = "jiyun233",email = "koishi@origin.pw"}
-]
+description = "Nearcade Reporter Plugin"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = [
+authors = [
+    { name = "jiyun233", email = "koishi@origin.pw" }
 ]
+dependencies = []
 
 [tool.poetry]
-packages = [{include = "nearcadereporterplugin", from = "src"}]
+packages = [
+    { include = "nonebot_plugin_nearcade_reporter", from = "src" }
+]
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
