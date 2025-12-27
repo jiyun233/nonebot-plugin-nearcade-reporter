@@ -38,7 +38,7 @@ async def _(args: dict[str, str] = RegexDict()):
             break
     if game_count is None:
         await arcade_attendance.finish(f"获取 {arcade.name} 人数失败!")
-    reply_msg = config.query_attendance_match.reply_message.format(
+    reply_msg = config.query_attendance_match.reply_message.format_map(
         SafeDict(
             arcade=arcade.name,
             count=game_count,
