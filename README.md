@@ -29,7 +29,8 @@ akiba几人
 ```text
 查找机厅 keywrod
 ```
-** 搜索机厅只有SUPERUSERS可用 **
+
+**搜索机厅只有SUPERUSERS可用**
 
 ## ⚙️ 配置方式
 
