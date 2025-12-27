@@ -55,13 +55,15 @@ UPDATE_ATTENDANCE_MATCH='{
 ### 机厅配置
 ```toml
 ARCADES='{
-  "1": {
+  "1001": {
     "arcade_source": "bemani",
     "aliases": ["秋叶原", "akiba"],
     "default_game_id": 1001
   }
 }'
 ```
+**请先使用搜索机厅获取机厅ID与机台GameID**
+
 
 ### ⚠️ 注意事项
 
