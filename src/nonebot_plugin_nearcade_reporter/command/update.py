@@ -10,6 +10,11 @@ nearcade = NearcadeHttp(config.api_token)
 arcade_attendance = on_regex(config.update_attendance_match.pattern)
 
 
+class SafeDict(dict):
+    def __missing__(self, key):
+        return "{" + key + "}"
+
+
 @arcade_attendance.handle()
 async def _(args: dict[str, str] = RegexDict()):
     arcade_name = args.get("arcade")
@@ -41,8 +46,11 @@ async def _(args: dict[str, str] = RegexDict()):
     if not success:
         await arcade_attendance.finish(f"更新失败：{message or '未知错误'}")
     reply_msg = config.update_attendance_match.reply_message.format(
-        arcade=arcade.name,
-        count=count,
+        SafeDict(
+            arcade=arcade.name,
+            count=count,
+            arcade_id=arcade_id,
+        )
     )
     if config.update_attendance_match.enable_reply:
         await arcade_attendance.finish(f"{reply_msg}")
