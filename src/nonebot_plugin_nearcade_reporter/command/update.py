@@ -2,7 +2,6 @@ from nonebot import get_plugin_config, on_regex
 from nonebot.params import RegexDict
 
 from nonebot_plugin_nearcade_reporter.config import Config
-from nonebot.adapters.onebot.v11 import GroupMessageEvent
 from nonebot_plugin_nearcade_reporter.network import NearcadeHttp
 
 config = get_plugin_config(Config)
@@ -12,7 +11,7 @@ arcade_attendance = on_regex(config.update_attendance_match.pattern)
 
 
 @arcade_attendance.handle()
-async def _(event: GroupMessageEvent, args: dict[str, str] = RegexDict()):
+async def _(args: dict[str, str] = RegexDict()):
     arcade_name = args.get("arcade")
     if not arcade_name:
         ...  # Should not happen due to regex
@@ -37,7 +36,7 @@ async def _(event: GroupMessageEvent, args: dict[str, str] = RegexDict()):
         game_id=config.arcades[arcade_id].default_game_id,
         count=int(count),
         source=config.arcades[arcade_id].arcade_source,
-        comment=f"Update from QQ ({event.get_user_id()})",
+        comment="Update from Nearcade Reporter Bot",
     )
     if not success:
         await arcade_attendance.finish(f"更新失败：{message or '未知错误'}")

@@ -9,6 +9,5 @@ __plugin_meta__ = PluginMetadata(
     usage="使用help nearcade查看帮助",
     type="application",
     homepage="https://github.com/jiyun233/nonebot-plugin-nearcade-reporter",
-    supported_adapters={"~onebot.v11"},
     config=Config,
 )
