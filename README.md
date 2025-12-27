@@ -9,3 +9,60 @@
 
 </div>
 
+一个接入 [Nearcade](https://nearcade.phizone.cn/) 支持 正则命名分组 与 多机厅别名配置 查询 / 更新街机厅当前人数 的 NoneBot2 插件
+
+## 🚀 使用示例
+
+### 查询人数：
+
+```text
+秋叶原几人
+akiba几人
+```
+
+## 更新人数：
+
+```text
+机厅人数 秋叶原 12
+机厅人数 ikebukuro 30
+```
+
+## ⚙️ 配置方式
+
+### 查询人数
+```toml
+QUERY_ATTENDANCE_MATCH='{
+  "enabled": true,
+  "pattern": "^(?P<arcade>\\\\S+)几人$",
+  "arcade_alias": "arcade",
+  "reply_message": "{arcade} 当前人数: {count}"
+}'
+```
+
+### 更新人数正则
+```toml
+UPDATE_ATTENDANCE_MATCH='{
+  "enabled": true,
+  "pattern": "^机厅人数\\\\s*(?P<arcade>\\\\S+)\\\\s*(?P<count>(?:100|[1-9]\\\\d?|0))$",
+  "arcade_group_name": "arcade",
+  "count_group_name": "count",
+  "reply_message": "更新成功，{arcade} 当前人数: {count}"
+}'
+```
+
+### 机厅配置
+```toml
+ARCADES='{
+  "1": {
+    "arcade_source": "bemani",
+    "aliases": ["秋叶原", "akiba"],
+    "default_game_id": 1001
+  }
+}'
+```
+
+### ⚠️ 注意事项
+
+环境变量中的 JSON 必须是合法 JSON
+
+正则中的反斜杠需要 双重转义（例如 \\S、\\s、\\d）
