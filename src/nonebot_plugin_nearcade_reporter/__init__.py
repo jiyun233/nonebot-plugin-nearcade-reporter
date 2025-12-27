@@ -1,6 +1,3 @@
-from pathlib import Path
-
-import nonebot
 from nonebot.plugin import PluginMetadata
 
 from . import command  # noqa: F401
@@ -14,8 +11,4 @@ __plugin_meta__ = PluginMetadata(
     homepage="https://github.com/jiyun233/nonebot-plugin-nearcade-reporter",
     supported_adapters={"~onebot.v11"},
     config=Config,
-)
-
-sub_plugins = nonebot.load_plugins(
-    str(Path(__file__).parent.joinpath("plugins").resolve())
 )
